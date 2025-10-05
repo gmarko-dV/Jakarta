@@ -8,9 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Bienvenidos al sistema</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body>
-<h1>Bienvenidos al sistema</h1>
+<body class="principal-bg">
+  <div class="container">
+    <h1 class="titulo">Bienvenidos al sistema</h1>
+    <nav>
+      <a class="menu-link" href="CursoServlet?action=listar">Gestión de cursos</a>
+    </nav>
+  </div>
 </body>
 </html>

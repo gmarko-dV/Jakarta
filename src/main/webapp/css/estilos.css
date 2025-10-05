@@ -1,88 +1,396 @@
-/* Made with love by Mutiullah Samim*/
+/* Mejora del CSS original - Optimizado y modernizado */
 
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-html,body{
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
+/* ============================================
+   VARIABLES CSS
+   ============================================ */
+:root {
+    --color-primary: #2980b9;
+    --color-secondary: #6dd5fa;
+    --color-accent: #FFC312;
+    --color-dark: rgba(0, 0, 0, 0.5);
+    --color-white: #ffffff;
+    --color-text: #222222;
+    --color-bg-light: #f8fafc;
+    --color-bg-gray: #e0e7ef;
+    --color-table-bg: #f4f8fb;
+    --color-table-hover: #d0e6fa;
+    --color-table-stripe: #eaf1f7;
+    --color-border: #bfc9d4;
+    
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    --transition-speed: 0.3s;
+}
+
+/* ============================================
+   ESTILOS GLOBALES
+   ============================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background: linear-gradient(120deg, var(--color-bg-light) 0%, var(--color-bg-gray) 100%);
+    min-height: 100vh;
     font-family: 'Numans', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
 }
 
-.container{
-    height: 100%;
-    align-content: center;
+/* ============================================
+   BACKGROUND PRINCIPAL
+   ============================================ */
+.principal-bg {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.card{
-    height: 370px;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0,0,0,0.5) !important;
+/* ============================================
+   CONTENEDORES
+   ============================================ */
+.container {
+    max-width: 700px;
+    margin: 60px auto;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 32px 24px;
+    text-align: center;
 }
 
-.social_icon span{
-    font-size: 60px;
-    margin-left: 10px;
-    color: #FFC312;
+/* ============================================
+   CARD DE LOGIN
+   ============================================ */
+.card {
+    height: auto;
+    min-height: 370px;
+    margin: auto;
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--color-dark) !important;
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: transform var(--transition-speed);
 }
 
-.social_icon span:hover{
-    color: white;
-    cursor: pointer;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.card-header h3{
-    color: white;
+.card-header h3 {
+    color: var(--color-white);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
-.social_icon{
+/* ============================================
+   ICONOS SOCIALES
+   ============================================ */
+.social_icon {
     position: absolute;
     right: 20px;
     top: -45px;
+    display: flex;
+    gap: 10px;
 }
 
-.input-group-prepend span{
+.social_icon span {
+    font-size: 60px;
+    color: var(--color-accent);
+    transition: all var(--transition-speed) ease;
+}
+
+.social_icon span:hover {
+    color: var(--color-white);
+    cursor: pointer;
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* ============================================
+   FORMULARIOS
+   ============================================ */
+.input-group-prepend span {
     width: 50px;
-    background-color: #FFC312;
-    color: black;
-    border:0 !important;
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    border: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
 }
 
-input:focus{
-    outline: 0 0 0 0  !important;
-    box-shadow: 0 0 0 0 !important;
+input:focus {
+    outline: 0 !important;
+    box-shadow: 0 0 0 3px rgba(255, 195, 18, 0.3) !important;
+    border-color: var(--color-accent) !important;
 }
 
-.remember{
-    color: white;
+form label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-primary);
+    font-weight: 500;
+    text-align: left;
 }
 
-.remember input
-{
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 1em;
+    background: var(--color-bg-light);
+    transition: all var(--transition-speed);
+}
+
+form input[type="text"]:hover,
+form input[type="number"]:hover,
+form input[type="email"]:hover,
+form input[type="password"]:hover {
+    border-color: var(--color-primary);
+}
+
+form button.menu-link {
+    margin-right: 8px;
+}
+
+/* ============================================
+   CHECKBOX REMEMBER
+   ============================================ */
+.remember {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.remember input {
     width: 20px;
     height: 20px;
-    margin-left: 15px;
-    margin-right: 5px;
+    margin: 0 8px 0 0;
+    cursor: pointer;
+    accent-color: var(--color-accent);
 }
 
-.login_btn{
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
+/* ============================================
+   BOTONES
+   ============================================ */
+.login_btn,
+.menu-link {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-speed);
 }
 
-.login_btn:hover{
-    color: black;
-    background-color: white;
+.login_btn {
+    min-width: 120px;
+    color: var(--color-text);
+    background-color: var(--color-accent);
 }
 
-.links{
-    color: white;
+.login_btn:hover {
+    color: var(--color-text);
+    background-color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
-.links a{
+.menu-link {
+    margin: 8px;
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.menu-link:hover {
+    background: var(--color-secondary);
+    color: var(--color-text);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   TABLAS CRUD
+   ============================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    background: var(--color-table-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+th {
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background: var(--color-table-stripe);
+}
+
+tr:hover {
+    background: var(--color-table-hover);
+    transition: background var(--transition-speed);
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* ============================================
+   NAVEGACIÓN
+   ============================================ */
+nav {
+    margin-top: 24px;
+}
+
+/* ============================================
+   TÍTULOS
+   ============================================ */
+.titulo {
+    color: var(--color-primary);
+    font-size: 2.2em;
+    margin-bottom: 24px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* ============================================
+   ENLACES
+   ============================================ */
+.links {
+    color: var(--color-white);
+    margin-top: 16px;
+}
+
+.links a {
     margin-left: 4px;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.links a:hover {
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 24px 16px;
+    }
+    
+    .card {
+        max-width: 100%;
+    }
+    
+    .titulo {
+        font-size: 1.8em;
+    }
+    
+    .menu-link {
+        display: block;
+        margin: 8px 0;
+    }
+    
+    .social_icon span {
+        font-size: 45px;
+    }
+    
+    table {
+        font-size: 0.9em;
+    }
+    
+    th,
+    td {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 1.5em;
+    }
+    
+    .social_icon {
+        right: 10px;
+        top: -40px;
+    }
+    
+    .social_icon span {
+        font-size: 40px;
+    }
+    
+    table {
+        font-size: 0.8em;
+    }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card,
+.container {
+    animation: fadeIn 0.5s ease-out;
 }

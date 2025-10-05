@@ -7,11 +7,12 @@ public class Curso {
 
     public Curso() {}
 
-    public Curso(String chrCurCodigo, String vchCurNombre, int intCurCreditos) {
-        this.codigo = chrCurCodigo;
-        this.nombre = vchCurNombre;
-        this.creditos = intCurCreditos;
+    public Curso(String codigo, String nombre, int creditos) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.creditos = creditos;
     }
+
 
     public String getCodigo() {
         return codigo;

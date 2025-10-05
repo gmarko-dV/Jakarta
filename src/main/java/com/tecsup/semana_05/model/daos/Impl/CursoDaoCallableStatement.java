@@ -62,21 +62,50 @@ public class CursoDaoCallableStatement implements CursoDao {
         catch (SQLException e){
             System.out.println("Error en la Consulta del curso");
         }
-        return null;
+    return curso;
     }
 
     @Override
     public List<Curso> findAll() {
-        return List.of();
+        List<Curso> lista = new java.util.ArrayList<>();
+       try (Connection con = DBConn.getConnection();
+           CallableStatement cst = con.prepareCall("{call sp_findAll_curso()}");
+           ResultSet rs = cst.executeQuery()) {
+            while (rs.next()) {
+                Curso curso = new Curso(
+                    rs.getString("chrCurCodigo"),
+                    rs.getString("vchCurNombre"),
+                    rs.getInt("intCurCreditos")
+                );
+                lista.add(curso);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar cursos: " + e.getMessage());
+        }
+        return lista;
     }
 
     @Override
     public void update(Curso curso) {
-
+        try (Connection con = DBConn.getConnection();
+             CallableStatement cst = con.prepareCall("{call sp_upd_curso(?,?,?)}")) {
+            cst.setString(1, curso.getCodigo());
+            cst.setString(2, curso.getNombre());
+            cst.setInt(3, curso.getCreditos());
+            cst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar el curso: " + e.getMessage());
+        }
     }
 
     @Override
     public void delete(String id) {
-
+        try (Connection con = DBConn.getConnection();
+             CallableStatement cst = con.prepareCall("{call sp_del_curso(?)}")) {
+            cst.setString(1, id);
+            cst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el curso: " + e.getMessage());
+        }
     }
 }
